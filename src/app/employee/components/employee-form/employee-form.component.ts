@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-form',
-  standalone: false,
-  
   templateUrl: './employee-form.component.html',
-  styleUrl: './employee-form.component.css'
+  standalone: false
 })
-export class EmployeeFormComponent {
+export class EmployeeFormComponent  {
 
 }

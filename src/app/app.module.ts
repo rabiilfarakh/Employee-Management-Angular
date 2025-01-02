@@ -1,54 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; 
-import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { EmployeeComponent } from './components/employee/employee.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
-import { EditeEmployeeComponent } from './components/edite-employee/edite-employee.component';
+import { EmployeeListComponent } from './employee/components/employee-list/employee-list.component';
+import { EmployeeFormComponent } from './employee/components/employee-form/employee-form.component';
 
-import { CanActivateGuard } from './guards/canActivate.guard';
-import { CanActivateChildGuard } from './guards/canActivateChild.guard';
-import { CanDeactivateGuard } from './guards/canDeactivate.guard';
-import { CanLoadGuard } from './guards/canLoad.guard';
+import { EmployeeService } from './employee/services/employee.service';
 
 const routes: Routes = [
-  { 
-    path: '', 
-    component: EmployeeComponent, 
-    canActivateChild: [CanActivateChildGuard], 
-    children: [
-      { path: 'addEmployee', component: AddEmployeeComponent },
-    ]
-  },
-
-
-  { path: 'editeEmployee', 
-    component: EditeEmployeeComponent,
-    canActivate: [CanActivateGuard]}, 
+  { path: '', component: EmployeeListComponent },
+  { path: 'add', component: EmployeeFormComponent },
+  { path: ':id', component: EmployeeFormComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent,
-    NavbarComponent,
-    AddEmployeeComponent,
-    EditeEmployeeComponent
+    EmployeeListComponent,
+    EmployeeFormComponent,
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes, { useHash: true }),
   ],
-  providers: [
-    CanActivateGuard,
-    CanActivateChildGuard,
-    CanDeactivateGuard,
-    CanLoadGuard
-  ],
-  bootstrap: [AppComponent]
+
+  providers: [EmployeeService],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
