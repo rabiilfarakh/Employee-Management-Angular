@@ -1,0 +1,62 @@
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ajout d'ombre autour du tableau pour effet de profondeur */
+    background-color: #ffffff; /* Fond blanc pour une apparence propre */
+    margin: 30px 0;
+    border-radius: 8px; /* Coins arrondis pour un look plus moderne */
+}
+
+.employee-table th, .employee-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px; /* Espacement plus généreux pour un meilleur confort de lecture */
+    text-align: left;
+    font-size: 14px;
+    color: #333; /* Couleur de texte gris foncé */
+}
+
+.employee-table th {
+    background-color: #4CAF50; /* Vert pour l'entête, couleur cohérente et agréable */
+    color: white;
+    font-weight: bold; /* Mettre les titres en gras */
+}
+
+.employee-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Couleur de fond alternative pour les lignes paires */
+}
+
+.employee-table tr:hover {
+    background-color: #f1f1f1; /* Couleur de survol pour une meilleure interaction */
+    cursor: pointer;
+}
+
+.employee-table td {
+    font-size: 15px; /* Une taille de police un peu plus grande pour une meilleure lisibilité */
+}
+
+.edit-icon, .delete-icon {
+    color: #007bff; /* Couleur bleue pour les icônes de modification */
+    font-size: 18px;
+    transition: color 0.3s ease-in-out; /* Transition douce pour l'effet hover */
+    text-decoration: none;
+    padding: 0 10px; /* Espacement pour ne pas être trop collé au texte */
+}
+
+.edit-icon:hover {
+    color: #28a745; /* Vert clair lorsque l'icône de modification est survolée */
+}
+
+.delete-icon:hover {
+    color: #dc3545; /* Rouge vif pour la suppression */
+}
+
+.employee-table td a {
+    display: inline-block;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 50%; /* Icônes sous forme de cercle pour un design plus fluide */
+}
+
+.employee-table td a:hover {
+    background-color: #f1f1f1; /* Légère ombre de fond au survol */
+}

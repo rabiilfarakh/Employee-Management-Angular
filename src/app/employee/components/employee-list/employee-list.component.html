@@ -1,1 +1,23 @@
-<p>employee-list works!</p>
+<table class="employee-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Date d'Embauche</th>
+        <th>Modifier</th>
+        <th>Supprimer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.hireDate }}</td>
+        <td><a href="#" class="edit-icon" (click)="editEmployee(employee.id)">&#9998;</a></td>
+        <td><a href="#" class="delete-icon" (click)="deleteEmployee(employee.id)">&#10006;</a></td>
+      </tr>
+    </tbody>
+  </table>
+  
