@@ -1,67 +1,31 @@
-<div class="container">
-    <h2>Ajouter un Employé</h2>
+<div class="employee-form-container">
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-      <!-- Champ pour le nom -->
       <div class="form-group">
-        <label for="name">Nom</label>
-        <input 
-          type="text" 
-          id="name" 
-          class="form-control" 
-          formControlName="name" 
-          placeholder="Entrez le nom"
-        />
-        <div *ngIf="employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched" class="text-danger">
-          Ce champ est requis.
-        </div>
+        <label for="name">Nom:</label>
+        <input id="name" formControlName="name" type="text" />
       </div>
   
-      <!-- Champ pour le poste -->
       <div class="form-group">
-        <label for="position">Poste</label>
-        <input 
-          type="text" 
-          id="position" 
-          class="form-control" 
-          formControlName="position" 
-          placeholder="Entrez le poste"
-        />
-        <div *ngIf="employeeForm.get('position')?.invalid && employeeForm.get('position')?.touched" class="text-danger">
-          Ce champ est requis.
-        </div>
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" type="email" />
       </div>
   
-      <!-- Champ pour le département -->
       <div class="form-group">
-        <label for="department">Département</label>
-        <input 
-          type="text" 
-          id="department" 
-          class="form-control" 
-          formControlName="department" 
-          placeholder="Entrez le département"
-        />
-        <div *ngIf="employeeForm.get('department')?.invalid && employeeForm.get('department')?.touched" class="text-danger">
-          Ce champ est requis.
-        </div>
+        <label for="poste">Poste:</label>
+        <input id="poste" formControlName="poste" type="text" />
       </div>
   
-      <!-- Champ pour la date de début -->
       <div class="form-group">
-        <label for="startDate">Date de début</label>
-        <input 
-          type="date" 
-          id="startDate" 
-          class="form-control" 
-          formControlName="startDate"
-        />
-        <div *ngIf="employeeForm.get('startDate')?.invalid && employeeForm.get('startDate')?.touched" class="text-danger">
-          Ce champ est requis.
-        </div>
+        <label for="department">Département:</label>
+        <input id="department" formControlName="department" type="text" />
       </div>
   
-      <!-- Bouton pour soumettre -->
-      <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Ajouter</button>
+      <div class="form-group">
+        <label for="hireDate">Date d'embauche:</label>
+        <input id="hireDate" formControlName="hireDate" type="date" />
+      </div>
+  
+      <button type="submit" [disabled]="!employeeForm.valid">Ajouter Employé</button>
     </form>
   </div>
   

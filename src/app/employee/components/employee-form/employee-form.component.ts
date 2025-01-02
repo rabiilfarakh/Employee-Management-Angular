@@ -3,36 +3,54 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
 
 @Component({
+  standalone:false,
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
-  standalone: false
-})
-export class EmployeeFormComponent {
 
+  styleUrls: ['./employee-form.component.css']
+})
+export class EmployeeFormComponent implements OnInit {
   employeeForm!: FormGroup;
 
-  constructor(private employeeService : EmployeeService, private fb : FormBuilder) {
-      
-  };
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly employeeService: EmployeeService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  private initializeForm(): void {
     this.employeeForm = this.fb.group({
       name: ['', Validators.required],
-      position: ['', Validators.required],
+      email : ['', Validators.email],
+      poste: ['', Validators.required],
       department: ['', Validators.required],
-      startDate: ['', Validators.required]
+      hireDate: ['', Validators.required],
     });
   }
-  onSubmit() {
+
+  onSubmit(): void {
     if (this.employeeForm.valid) {
       const employee = this.employeeForm.value;
-      this.employeeService.addEmployee(employee).subscribe(newEmployee => {
+  
+      this.employeeService.addEmployee(employee).subscribe({
+        next: (newEmployee) => {
+          console.log('Employee added successfully:', newEmployee);
+          this.employeeForm.reset(); 
+        },
+        error: (error) => {
+          console.error('Error while adding employee:', error);
+          alert('An error occurred while adding the employee. Please try again.');
+        },
+        complete: () => {
+          console.log('Employee addition process completed');
+        }
       });
-      this.employeeForm.reset();
-    }else
-    {
-      alert('Please fill all the required fields');
+    } else {
+      alert('Please fill in all required fields.');
     }
   }
-
+  
 }
