@@ -6,7 +6,6 @@ import { EmployeeService } from '../../services/employee.service';
   standalone:false,
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
-
   styleUrls: ['./employee-form.component.css']
 })
 export class EmployeeFormComponent implements OnInit {

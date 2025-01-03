@@ -1,1 +1,31 @@
-<p>employee-card works!</p>
+<div class="employee-form-container">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Nom:</label>
+        <input id="name" formControlName="name" type="text" placeholder="Entrez le nom" />
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" type="email" placeholder="Entrez l'email" />
+      </div>
+  
+      <div class="form-group">
+        <label for="poste">Poste:</label>
+        <input id="poste" formControlName="poste" type="text" placeholder="Entrez le poste" />
+      </div>
+  
+      <div class="form-group">
+        <label for="department">Département:</label>
+        <input id="department" formControlName="department" type="text" placeholder="Entrez le département" />
+      </div>
+  
+      <div class="form-group">
+        <label for="hireDate">Date d'embauche:</label>
+        <input id="hireDate" formControlName="hireDate" type="date" />
+      </div>
+  
+      <button type="submit" [disabled]="!employeeForm.valid">Modifier Employé</button>
+    </form>
+  </div>
+  

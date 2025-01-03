@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/employee.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   standalone: false, 
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css'] 
+  styleUrls: ['./employee-list.component.css'],
+  providers: [DatePipe]
 })
 export class EmployeeListComponent implements OnInit {
   employees!: Employee[];
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
     this.loadEmployees();
@@ -27,9 +29,6 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.deleteEmployee(id).subscribe(() => {
       this.loadEmployees(); 
     });
-  }
-
-  editEmployee(id: number): void {
   }
 
 }
