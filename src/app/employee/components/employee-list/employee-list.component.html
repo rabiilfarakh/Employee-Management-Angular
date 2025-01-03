@@ -14,9 +14,15 @@
         <td>{{ employee.id }}</td>
         <td>{{ employee.name }}</td>
         <td>{{ employee.email }}</td>
-        <td>{{ employee.hireDate }}</td>
-        <td><a href="#" class="edit-icon" (click)="editEmployee(employee.id)">&#9998;</a></td>
-        <td><a href="#" class="delete-icon" (click)="deleteEmployee(employee.id)">&#10006;</a></td>
+        <td>{{ employee.hireDate | date:'dd/MM/yyyy' }}</td>
+        <td>
+            <a class="edit-icon" routerLink='/employees/edite/{{employee.id}}'>✏️</a>
+        </td>
+        <td>
+          <a href="#" class="delete-icon" (click)="deleteEmployee(employee.id)">
+            &#10006;
+          </a>
+        </td>
       </tr>
     </tbody>
   </table>
